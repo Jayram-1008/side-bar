@@ -1,4 +1,4 @@
-import {Button, Layout, Menu, theme, Space,Drawer} from 'antd';
+import {Button, Layout, theme,Drawer} from 'antd';
 import Logo from './Logo';
 import MenuList from './MenuList';
 import ToggleThemeButton from './ToggleThemeButton';
@@ -56,12 +56,8 @@ export function HomeLarge() {
 export const HomeSmall = () =>{
 
     const [open, setOpen] = useState(false);
-    const [placement, setPlacement] = useState('left');
     const showDrawer = () => {
       setOpen(true);
-    };
-    const onChange = (e) => {
-      setPlacement(e.target.value);
     };
     const onClose = () => {
       setOpen(false);
@@ -73,17 +69,10 @@ export const HomeSmall = () =>{
           {<BarsOutlined />}
     </Button>
         <Drawer
-            placement={placement}
+            placement="left"
             width={250}
             onClose={onClose}
             open={open}
-            // extra={
-            //     // <Space>
-            //     //     <Button type="primary" onClick={onClose}>
-            //     //         X
-            //     //     </Button>
-            //     // </Space>
-            // }
         >
         <HomeLarge/>
         </Drawer>
