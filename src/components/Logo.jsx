@@ -1,15 +1,17 @@
 import React from 'react'
-import { Avatar, Space } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 
-const Logo = () => {
+export const LogoLarge = () => {
   return (
-    <div className='logo'>
-        <div className="logo-icon" >
-            
-        </div>    
+    <div className='logo logo-large'>
+        <h2>Real State</h2>
     </div>
   )
 }
 
-export default Logo
+export const LogoSmall = () => {
+    return (
+      <div className='logo logo-small'>
+        <h3>Real <br/>State</h3>
+      </div>
+    )
+  }

@@ -1,9 +1,10 @@
 import {Button, Layout, theme,Drawer} from 'antd';
-import Logo from './Logo';
-import MenuList from './MenuList';
+import  { LogoLarge, LogoSmall } from './Logo';
+import {MenuList, MenuListMobile} from './MenuList';
 import ToggleThemeButton from './ToggleThemeButton';
 import { useState } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined, BarsOutlined } from '@ant-design/icons';
+import Navbar from './Navbar';
 
 const {Header, Sider} = Layout;
 
@@ -11,8 +12,17 @@ export function HomeLarge() {
   const [darkTheme, setDarkTheme] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
 
+  const [open, setOpen] = useState(false);
+
   const toggleTheme = () =>{
     setDarkTheme(!darkTheme);
+  }
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const toggleCollapse = () =>{
+    setCollapsed(!collapsed);
   }
 
   const {
@@ -31,7 +41,8 @@ export function HomeLarge() {
         >
           <br/>
           <br/>
-          <Logo/>
+          {collapsed ? <LogoSmall/> : <LogoLarge/>}
+          
           <br/>
           <br/>
           <MenuList darkTheme={darkTheme}/>
@@ -41,10 +52,7 @@ export function HomeLarge() {
           <Header 
             style={{padding: 0, background: colorBgContainer, width:'100%'}}
           >
-            <Button 
-              type='text' 
-              onClick={()=> setCollapsed(!collapsed)}
-              icon = {collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/> }/>
+            <Navbar toggleCollapse={toggleCollapse}/>
           </Header>
         </Layout>
       </Layout>
@@ -65,16 +73,14 @@ export const HomeSmall = () =>{
 
     return (
     <>
-    <Button type="primary" onClick={showDrawer}>
-          {<BarsOutlined />}
-    </Button>
+    <Navbar showDrawer={showDrawer}/> 
         <Drawer
             placement="left"
             width={250}
             onClose={onClose}
             open={open}
         >
-        <HomeLarge/>
+        <MenuListMobile/>
         </Drawer>
     </>
     )
