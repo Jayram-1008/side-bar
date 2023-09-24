@@ -42,7 +42,6 @@ export function HomeLarge() {
           <br/>
           <br/>
           {collapsed ? <LogoSmall/> : <LogoLarge/>}
-          
           <br/>
           <br/>
           <MenuList darkTheme={darkTheme}/>
@@ -80,7 +79,7 @@ export const HomeSmall = () =>{
             onClose={onClose}
             open={open}
         >
-        <MenuListMobile/>
+        <MenuList/>
         </Drawer>
     </>
     )
