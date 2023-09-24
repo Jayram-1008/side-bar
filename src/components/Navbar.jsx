@@ -26,27 +26,34 @@ const Navbar = ({toggleCollapse, showDrawer}) => {
 
   return (
     <Box sx={{display:'flex', width:'100%',}}>
-        <Box className="menu-bar-icon">
-            <Button variant='text' onClick={toggleCollapse || showDrawer}><MenuIcon/></Button>
+        <Box className="menu-bar-icon" sx={{display:'flex', alignItems:'center'}}>
+            <Button variant='text' onClick={toggleCollapse || showDrawer}><MenuIcon  sx={{fontSize:'30px'}}/></Button>
         </Box>
-        <Box className='search-bar' sx={{marginTop:'6px', marginLeft:'5%'}}>
+        <Box className='search-bar' sx={{marginTop:'6px', marginLeft:'10%'}}>
             <FormControl sx={{ m: 1, width:'100%'}} variant="outlined" >
             <OutlinedInput
-                id="outlined-adornment-weight"
+                id="outlined-adornment-search"
                 placeholder='Search'
-                endAdornment={<InputAdornment position="end"><SearchOutlinedIcon/></InputAdornment>}
-                aria-describedby="outlined-weight-helper-text"
+                endAdornment={<InputAdornment position="end" sx={{cursor:'pointer'}}><SearchOutlinedIcon/></InputAdornment>}
+                aria-describedby="outlined-search-helper-text"
                 inputProps={{
-                'aria-label': 'weight',
+                'aria-label': 'search',
                 sx: {
                    height:'6px', // Set the desired height
                     width: '350px', // Set the desired width
                   },
                 }}
+                sx={{
+                    '@media (max-width: 800px)': {
+                      width: '50px', // Reduce the width when screen size is less than 1000px
+                      outline:'none',
+                      border:'none'
+                    },
+                  }}
             />
             </FormControl>
         </Box>
-        <Box className='nav-right-side' sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'20px' }}>
+        <Box className='nav-right-side' sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'50px' }}>
             <Box className='badges' sx={{cursor:'pointer'}}>
                 <IconButton aria-label="cart">
                     <Badge color="secondary" variant='dot'>
@@ -55,8 +62,8 @@ const Navbar = ({toggleCollapse, showDrawer}) => {
                 </IconButton>
             </Box>
             <Box sx={{display:'flex', alignItems:'center',}}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                <Box sx={{marginLeft:'5px'}}>
+                <Avatar className='avatar' alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Box sx={{marginLeft:'5px'}} className='profile-name'>
                     <Typography> User name</Typography>
                 </Box>
                 <Box className="" sx={{marginTop:'10px', cursor:'pointer'}}>

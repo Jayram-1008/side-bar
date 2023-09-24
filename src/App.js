@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <div>
-        {windowWidth < 700 ? <HomeSmall/> : <HomeLarge/>}
+        {windowWidth < 800 ? <HomeSmall/> : <HomeLarge/>}
       </div>
     </>
      
