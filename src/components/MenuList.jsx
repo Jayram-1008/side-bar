@@ -9,14 +9,18 @@ import {
 
 }from '@ant-design/icons'
 
+import { Box } from '@mui/material'
+
 import { Menu } from 'antd'
 import React from 'react'
 
 export const MenuList = ({darkTheme}) => {
   return (
     <>
-        <Menu theme={darkTheme ? "dark" : "light" } mode='inline' className='menu-bar'>
-            <div className="menu-title"><span>MAIN</span> <span> MENU</span></div>
+        <Menu theme={darkTheme ? "dark" : "light" } mode='inline' style={{minHeight:'100vh',}}>
+            <Box sx={{color:'gray', padding:'5px', margin:'20px 10px', display:'flex', flexWrap:'wrap', lineHeight:'1.5'}}>
+                MAIN MENU
+            </Box>
             <Menu.Item key="dashboard" icon={<AppstoreOutlined />}> Dashboard </Menu.Item>
             <Menu.SubMenu key="project" icon={<ProjectOutlined /> } title="Project">
                 <Menu.Item key="addproject">Add Project</Menu.Item>
@@ -38,7 +42,9 @@ export const MenuList = ({darkTheme}) => {
                 <Menu.Item key="editcustomer">Edit Customer</Menu.Item>
                 <Menu.Item key="viewcustomer">View</Menu.Item> */}
             </Menu.SubMenu>
-            <div className='menu-title'>OTHER</div>
+            <Box sx={{color:'gray', padding:'5px', margin:'20px 10px', display:'flex', flexWrap:'wrap', lineHeight:'1.5'}}>
+                OTHER
+            </Box>
             <Menu.Item key="support" icon={<CustomerServiceOutlined />}> Support </Menu.Item>
             <Menu.Item key="setting" icon={<SettingOutlined />}> Setting </Menu.Item>
         </Menu>
@@ -48,8 +54,8 @@ export const MenuList = ({darkTheme}) => {
 
 export const MenuListMobile = ({darkTheme}) =>{
     return (
-        <Menu theme={darkTheme ? "dark" : "light" } mode='inline' className='menu-bar'>
-            <div className="menu-title"><span>MAIN</span> <span> MENU</span></div>
+        <Menu theme={darkTheme ? "dark" : "light" } mode='inline' >
+            <Box className="menu-title">MAIN MENU </Box>
             <Menu.Item key="dashboard" icon={<AppstoreOutlined />}> Dashboard </Menu.Item>
             <Menu.SubMenu key="project" icon={<ProjectOutlined /> } title="Project">
                 <Menu.Item key="addproject">Add Project</Menu.Item>
@@ -71,7 +77,7 @@ export const MenuListMobile = ({darkTheme}) =>{
                 <Menu.Item key="editcustomer">Edit Customer</Menu.Item>
                 <Menu.Item key="viewcustomer">View</Menu.Item> */}
             </Menu.SubMenu>
-            <div className='menu-title'>OTHER</div>
+            <Box className='menu-title'>OTHER</Box>
             <Menu.Item key="support" icon={<CustomerServiceOutlined />}> Support </Menu.Item>
             <Menu.Item key="setting" icon={<SettingOutlined />}> Setting </Menu.Item>
         </Menu>

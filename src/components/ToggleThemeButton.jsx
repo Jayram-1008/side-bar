@@ -1,13 +1,13 @@
-import { Button } from 'antd'
+import { Box, Button } from '@mui/material'
 import React from 'react'
 
 const ToggleThemeButton = ({darkTheme, toggleTheme}) => {
   return (
-    <div className='toggle-theme-btn'>
+    <Box sx={{margin:'10px 20px'}}>
         <Button onClick={toggleTheme}>
             {darkTheme ? "Sun" : "Dark"}
         </Button>
-    </div>
+    </Box>
   )
 }
 

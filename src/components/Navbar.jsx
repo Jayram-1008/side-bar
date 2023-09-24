@@ -1,16 +1,13 @@
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Button, IconButton, Typography } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import Badge from '@mui/material/Badge';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Avatar from '@mui/material/Avatar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { SearchOffRounded, SearchOffTwoTone, SearchSharp } from '@mui/icons-material';
 
 
 const Navbar = ({toggleCollapse, showDrawer}) => {
@@ -25,35 +22,22 @@ const Navbar = ({toggleCollapse, showDrawer}) => {
     };
 
   return (
-    <Box sx={{display:'flex', width:'100%',}}>
-        <Box className="menu-bar-icon" sx={{display:'flex', alignItems:'center'}}>
+    <Box sx={{display:'flex', width:'100%', alignItems:'center', justifyContent:'space-evenly', }}>
+        <Box sx={{display:'flex', alignItems:'center'}}>
             <Button variant='text' onClick={toggleCollapse || showDrawer}><MenuIcon  sx={{fontSize:'30px'}}/></Button>
         </Box>
-        <Box className='search-bar' sx={{marginTop:'6px', marginLeft:'10%'}}>
-            <FormControl sx={{ m: 1, width:'100%'}} variant="outlined" >
-            <OutlinedInput
-                id="outlined-adornment-search"
-                placeholder='Search'
-                endAdornment={<InputAdornment position="end" sx={{cursor:'pointer'}}><SearchOutlinedIcon/></InputAdornment>}
-                aria-describedby="outlined-search-helper-text"
-                inputProps={{
-                'aria-label': 'search',
-                sx: {
-                   height:'6px', // Set the desired height
-                    width: '350px', // Set the desired width
-                  },
-                }}
-                sx={{
-                    '@media (max-width: 800px)': {
-                      width: '50px', // Reduce the width when screen size is less than 1000px
-                      outline:'none',
-                      border:'none'
-                    },
-                  }}
-            />
-            </FormControl>
-        </Box>
-        <Box className='nav-right-side' sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'50px' }}>
+       <Box sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'20%'}}>
+        <TextField variant='outlined' placeholder='search' size='small' 
+            sx={{width:'100%', padding:'1px',
+            '@media only screen and (max-width: 800px)': {
+                display: 'none',
+              },}}
+        />
+        <IconButton>
+            <SearchSharp/>
+        </IconButton>
+       </Box>
+        <Box sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'50px' }}>
             <Box className='badges' sx={{cursor:'pointer'}}>
                 <IconButton aria-label="cart">
                     <Badge color="secondary" variant='dot'>
@@ -62,11 +46,16 @@ const Navbar = ({toggleCollapse, showDrawer}) => {
                 </IconButton>
             </Box>
             <Box sx={{display:'flex', alignItems:'center',}}>
-                <Avatar className='avatar' alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                <Box sx={{marginLeft:'5px'}} className='profile-name'>
+                <Avatar  alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Box 
+                    sx={{marginLeft:'5px',
+                    '@media only screen and (max-width: 1100px)': {
+                        display: 'none',
+                      },}}
+                    >
                     <Typography> User name</Typography>
                 </Box>
-                <Box className="" sx={{marginTop:'10px', cursor:'pointer'}}>
+                <Box sx={{marginTop:'10px', cursor:'pointer', marginLeft:'5px'}}>
                     <ExpandMoreIcon onClick={handleClick}/>
                         <Menu
                             id="basic-menu"
