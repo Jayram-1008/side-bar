@@ -5,9 +5,9 @@ import Badge from '@mui/material/Badge';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Avatar from '@mui/material/Avatar';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import SearchSharp from '@mui/icons-material/SearchSharp';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { SearchOffRounded, SearchOffTwoTone, SearchSharp } from '@mui/icons-material';
 
 
 const Navbar = ({toggleCollapse, showDrawer}) => {
@@ -21,24 +21,49 @@ const Navbar = ({toggleCollapse, showDrawer}) => {
       setAnchorEl(null);
     };
 
+    const handleSearchClick = (event) =>{
+        console.log("button clicked")
+    }
+
   return (
     <Box sx={{display:'flex', width:'100%', alignItems:'center', justifyContent:'space-evenly', }}>
         <Box sx={{display:'flex', alignItems:'center'}}>
             <Button variant='text' onClick={toggleCollapse || showDrawer}><MenuIcon  sx={{fontSize:'30px'}}/></Button>
         </Box>
-       <Box sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'20%'}}>
+       <Box sx={{display:'flex',  width:'100%', marginLeft:'20%'}}>
         <TextField variant='outlined' placeholder='search' size='small' 
             sx={{width:'100%', padding:'1px',
             '@media only screen and (max-width: 800px)': {
                 display: 'none',
               },}}
         />
-        <IconButton>
+        <IconButton 
+            sx={{'@media only screen and (max-width: 800px)': {
+                display: 'none',
+              },}}
+        >
             <SearchSharp/>
         </IconButton>
        </Box>
-        <Box sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'50px' }}>
-            <Box className='badges' sx={{cursor:'pointer'}}>
+        <Box 
+            sx={{display:'flex', alignItems:'center', gap:'20px', justifyContent:'flex-end' , width:'100%', marginRight:'50px', 
+                '@media only screen and (max-width: 800px)': {
+                    marginRight: '10px',
+                },
+                }}
+        >
+            <Box sx={{display:'flex', alignItems:'center', marginTop:'5px'}}>
+                <IconButton
+                    sx={{display:'none',
+                        '@media only screen and (max-width: 800px)': {
+                            display: 'block',
+                            marginTop:'5px'
+                            
+                        },
+                    }}
+                >
+                    <SearchSharp onClick={handleSearchClick}/>
+                </IconButton>
                 <IconButton aria-label="cart">
                     <Badge color="secondary" variant='dot'>
                         <NotificationsIcon/>
