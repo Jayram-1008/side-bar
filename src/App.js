@@ -2,6 +2,8 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import {HomeLarge, HomeSmall} from './components/Home'
 import Navbar from './components/Navbar';
+import Header from './components/Header';
+import Dashboard from './pages/Dashboard';
 
 function App() {
     
@@ -33,6 +35,7 @@ function App() {
     <>
       <div>
         {windowWidth < 800 ? <HomeSmall/> : <HomeLarge/>}
+       
       </div>
     </>
      
